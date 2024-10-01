@@ -1,0 +1,42 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import "bootstrap/scss/bootstrap";
+
+$light-theme: mat.define-theme((
+    color: (
+        theme-type: light,
+        primary: mat.$azure-palette, // azure, rose, cyan, magenta
+    )
+));
+
+@include mat.core();
+@include mat.color-variants-backwards-compatibility($light-theme);
+
+@mixin theme($theme) {
+    $surface-container: mat.get-theme-color($theme, surface-container);
+
+    .mat-toolbar {
+        background: $surface-container;
+    }
+}
+
+.mat-toolbar {
+    min-height: 64px;
+}
+
+:root {
+    @include mat.all-component-themes($light-theme);
+    @include theme($light-theme);
+    --mat-sidenav-container-width: 120px;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-size: .875rem !important;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

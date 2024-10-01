@@ -1,0 +1,14 @@
+:host {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.main-content,
+.example-container {
+    flex: 2 1 0;
+}
